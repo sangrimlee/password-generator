@@ -1,23 +1,15 @@
-import React, { useState } from 'react';
-import { GeneratePasswordContext } from '../../contexts/GeneratePasswordContext';
+import React from 'react';
 import { Password } from './Password';
 import { Options } from './Options';
-import {
-  DEFAULT_GENERATE_PASSWORD_OPTIONS,
-  IGeneratePasswordOptions,
-} from '../../services/GeneratePassword';
+import { GeneratePasswordProvider } from '../../contexts/GeneratePasswordContext';
 
 export const GeneratePasswordForm = () => {
-  const [options, setOptions] = useState<IGeneratePasswordOptions>(
-    DEFAULT_GENERATE_PASSWORD_OPTIONS,
-  );
-
   return (
-    <GeneratePasswordContext.Provider value={{ options, setOptions }}>
+    <GeneratePasswordProvider>
       <div className="w-full">
         <Password />
         <Options />
       </div>
-    </GeneratePasswordContext.Provider>
+    </GeneratePasswordProvider>
   );
 };

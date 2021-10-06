@@ -6,9 +6,9 @@ import { useGeneratePasswordContext } from '../../contexts/GeneratePasswordConte
 export const Options = () => {
   const { options, setOptions } = useGeneratePasswordContext();
   return (
-    <div className="grid md:grid-cols-2 border-t border-lightgray py-8">
+    <div className="grid md:grid-cols-2 py-8">
       <div className="flex-1 ">
-        <h5 className="text-darkgray font-semibold">문자 유형</h5>
+        <h5 className="font-semibold">문자 유형</h5>
         <div className="grid md:grid-cols-2 gap-4 py-4">
           <div>
             <Checkbox
@@ -85,7 +85,7 @@ export const Options = () => {
         </div>
       </div>
       <div className="flex-1">
-        <h5 className="text-darkgray font-semibold">비밀번호 길이</h5>
+        <h5 className="font-semibold">비밀번호 길이</h5>
         <Range
           value={options.length}
           min="6"

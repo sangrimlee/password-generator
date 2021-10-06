@@ -13,7 +13,7 @@ export const Checkbox: React.FC<ICheckboxProps> = ({
   return (
     <div className="flex items-center">
       <input
-        className="form-checkbox h-5 w-5 border-lightgray rounded-sm text-blue mr-2 shadow-inner focus:ring-blue"
+        className="form-checkbox h-5 w-5 border-0 rounded-sm mr-2 text-blue dark:text-blue bg-lightgray dark:bg-black shadow-inner"
         id={id}
         type="checkbox"
         {...inputProps}

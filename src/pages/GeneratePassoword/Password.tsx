@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../../components/Button/Button';
-import { ReactComponent as CopyIcon } from '../../assets/copy-icon.svg';
 import { copyToClipboard } from '../../services/CopyToClipboard';
 import { useGeneratePasswordContext } from '../../contexts/GeneratePasswordContext';
 import { generatePassword } from '../../services/GeneratePassword';
+import { ReactComponent as Copy } from '../../assets/svg/copy.svg';
 
 export const Password = () => {
   const [password, setPassword] = useState<string>('');
@@ -18,8 +18,8 @@ export const Password = () => {
 
   return (
     <div className="grid md:grid-cols-4 gap-4">
-      <div className="md:col-span-3 text-darkgray">
-        <div className="flex items-center justify-between p-5 rounded-xl bg-lightgray">
+      <div className="md:col-span-3 text-darkgray dark:text-gray">
+        <div className="flex items-center justify-between p-5 rounded-xl bg-lightgray dark:bg-black">
           <input
             className="flex-1 bg-transparent focus:outline-none"
             placeholder="비밀번호를 생성하세요."
@@ -28,7 +28,7 @@ export const Password = () => {
             onChange={onChangePassword}
           />
           <button onClick={() => copyToClipboard(password)}>
-            <CopyIcon className="fill-current" />
+            <Copy className="fill-current" />
           </button>
         </div>
       </div>

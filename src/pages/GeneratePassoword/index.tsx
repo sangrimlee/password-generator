@@ -3,10 +3,10 @@ import { GeneratePasswordForm } from './GeneratePasswordForm';
 
 export function GeneratePassword() {
   return (
-    <div className="container bg-white py-20">
+    <div className="container py-20 text-black dark:text-lightgray">
       <div className="flex flex-col items-center mb-16">
-        <h1 className="mb-8 text-4xl font-semibold">랜덤 비밀번호 생성기</h1>
-        <p className="max-w-screen-sm text-lg text-center font-normal text-darkgray">
+        <h1 className="mb-8 text-4xl font-semibold ">랜덤 비밀번호 생성기</h1>
+        <p className="max-w-screen-sm text-lg text-center font-normal">
           안전한 랜덤 비밀번호를 생성하세요.{' '}
           <strong>
             모든 비밀번호는 고객님의 장치에서 안전하게 생성되며 절대로
