@@ -7,7 +7,7 @@ export const Options = () => {
   const { options, setOptions } = useGeneratePasswordContext();
   return (
     <div className="grid md:grid-cols-2 py-8">
-      <div className="flex-1 ">
+      <div>
         <h5 className="font-semibold">문자 유형</h5>
         <div className="grid md:grid-cols-2 gap-4 py-4">
           <div>
@@ -82,9 +82,22 @@ export const Options = () => {
               }
             />
           </div>
+          <div>
+            <Checkbox
+              id="ambigious"
+              label="애매한 문자 피하기 (예: 1,I,l)"
+              checked={options.removeAmbiguous}
+              onClick={() => {
+                setOptions({
+                  ...options,
+                  removeAmbiguous: !options.removeAmbiguous,
+                });
+              }}
+            />
+          </div>
         </div>
       </div>
-      <div className="flex-1">
+      <div>
         <h5 className="font-semibold">비밀번호 길이</h5>
         <Range
           value={options.length}

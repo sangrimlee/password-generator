@@ -2,7 +2,7 @@ const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz';
 const DIGIT = '0123456789';
 const SPECIAL = '~!@#$%^&*+=|()[]{}:;-_-';
-const AMBIGUOUS = 'lI1|';
+const AMBIGUOUS = /i|l|I|1|\||0|o|O|2|Z|z/g;
 
 export interface IGeneratePasswordOptions {
   length: number;
@@ -10,6 +10,7 @@ export interface IGeneratePasswordOptions {
   isLowerCase: boolean;
   isDigit: boolean;
   isSpecial: boolean;
+  removeAmbiguous: boolean;
 }
 
 export const DEFAULT_GENERATE_PASSWORD_OPTIONS: IGeneratePasswordOptions = {
@@ -18,6 +19,7 @@ export const DEFAULT_GENERATE_PASSWORD_OPTIONS: IGeneratePasswordOptions = {
   isLowerCase: true,
   isDigit: true,
   isSpecial: true,
+  removeAmbiguous: false,
 };
 
 export function generatePassword({
@@ -26,19 +28,18 @@ export function generatePassword({
   isLowerCase,
   isDigit,
   isSpecial,
+  removeAmbiguous,
 }: IGeneratePasswordOptions) {
   let characters = '';
   if (isUpperCase) characters += UPPERCASE;
   if (isLowerCase) characters += LOWERCASE;
   if (isDigit) characters += DIGIT;
   if (isSpecial) characters += SPECIAL;
-  const arr = new Uint8Array(length ?? 10);
-  const charIndexes = window.crypto
-    .getRandomValues(arr)
-    .map((value) => value % characters.length);
-  let password = '';
-  for (let i = 0; i < arr.length; i++) {
-    password += characters[charIndexes[i]];
-  }
+  if (removeAmbiguous) characters = characters.replace(AMBIGUOUS, '');
+  const password = Array.from(
+    window.crypto.getRandomValues(new Uint32Array(length)),
+  )
+    .map((value) => characters[value % characters.length])
+    .join('');
   return password;
 }

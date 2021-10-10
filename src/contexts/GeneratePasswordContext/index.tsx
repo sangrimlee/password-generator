@@ -10,13 +10,7 @@ export interface IGeneratePasswordContext {
 }
 
 export const GeneratePasswordContext = createContext<IGeneratePasswordContext>({
-  options: {
-    length: 16,
-    isUpperCase: true,
-    isLowerCase: true,
-    isDigit: true,
-    isSpecial: true,
-  },
+  options: DEFAULT_GENERATE_PASSWORD_OPTIONS,
   setOptions: () => {},
 });
 
