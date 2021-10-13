@@ -1,7 +1,6 @@
 import React from 'react';
 import { useThemeContext } from '../../contexts/ThemeContext';
-import { ReactComponent as Sunny } from '../../assets/svg/sunny.svg';
-import { ReactComponent as Moon } from '../../assets/svg/moon.svg';
+import { IoMoon, IoSunny } from 'react-icons/io5';
 
 export const DarkModeButton = () => {
   const { theme, setTheme } = useThemeContext();
@@ -24,9 +23,9 @@ export const DarkModeButton = () => {
             }`}
           >
             {theme === 'light' ? (
-              <Moon className="fill-current" width="16" height="16" />
+              <IoMoon className="fill-current" width="16" height="16" />
             ) : (
-              <Sunny className="fill-current" width="16" height="16" />
+              <IoSunny className="fill-current" width="16" height="16" />
             )}
           </div>
         </div>

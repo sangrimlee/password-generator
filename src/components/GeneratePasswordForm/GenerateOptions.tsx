@@ -1,15 +1,15 @@
 import React from 'react';
-import { Checkbox } from '../../components/Input/Checkbox';
-import { Range } from '../../components/Input/Range';
+import { Checkbox } from '../Input/Checkbox';
+import { Range } from '../Input/Range';
 import { useGeneratePasswordContext } from '../../contexts/GeneratePasswordContext';
 
-export const Options = () => {
+export const GenerateOptions = () => {
   const { options, setOptions } = useGeneratePasswordContext();
   return (
-    <div className="grid md:grid-cols-2 py-8">
+    <div className="grid md:grid-cols-2 gap-10">
       <div>
         <h5 className="font-semibold">문자 유형</h5>
-        <div className="grid md:grid-cols-2 gap-4 py-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 py-4">
           <div>
             <Checkbox
               id="uppercase"
@@ -82,7 +82,7 @@ export const Options = () => {
               }
             />
           </div>
-          <div>
+          <div className="">
             <Checkbox
               id="ambigious"
               label="애매한 문자 피하기 (예: 1,I,l)"

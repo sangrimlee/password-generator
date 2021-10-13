@@ -5,17 +5,10 @@ enum Safety {
   Weak = '취약함',
   Good = '보통',
   Strong = '강력함',
-  VeryStrong = '매우 강력함',
 }
 
 const checkPasswordSafety = (length: number): Safety => {
-  return length < 8
-    ? Safety.Weak
-    : length < 10
-    ? Safety.Good
-    : length < 12
-    ? Safety.Strong
-    : Safety.VeryStrong;
+  return length < 8 ? Safety.Weak : length < 12 ? Safety.Good : Safety.Strong;
 };
 
 export const PasswordSafety = () => {

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '../../components/Button/Button';
+import { Button } from '../Button/Button';
 import { copyToClipboard } from '../../services/CopyToClipboard';
 import { useGeneratePasswordContext } from '../../contexts/GeneratePasswordContext';
 import { generatePassword } from '../../services/GeneratePassword';
-import { ReactComponent as Copy } from '../../assets/svg/copy.svg';
-import { PasswordSafety } from './PasswordSafety';
+import { PasswordSafety } from '../../pages/GeneratePassoword/PasswordSafety';
+import { IoCopyOutline } from 'react-icons/io5';
 
-export const Password = () => {
+export const PasswordInput = () => {
   const [password, setPassword] = useState<string>('');
   const { options } = useGeneratePasswordContext();
   const onChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +23,7 @@ export const Password = () => {
         <div className="md:col-span-3 text-darkgray dark:text-gray">
           <div className="flex items-center justify-between p-5 rounded-xl bg-lightgray dark:bg-black">
             <input
-              className="flex-1 bg-transparent focus:outline-none"
+              className="flex-1 bg-transparent focus:outline-none truncate"
               placeholder="비밀번호를 생성하세요."
               type="text"
               value={password}
@@ -32,7 +32,7 @@ export const Password = () => {
             <div className="flex">
               <PasswordSafety />
               <button onClick={() => copyToClipboard(password)}>
-                <Copy className="fill-current" />
+                <IoCopyOutline className="fill-current w-4 h-4" />
               </button>
             </div>
           </div>

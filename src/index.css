@@ -4,14 +4,16 @@
 
 @layer components {
   .container {
-    @apply max-w-screen-xl mx-auto px-4 xl:px-10;
+    @apply max-w-screen-xl mx-auto px-5 sm:px-10;
   }
-
   .animation {
     @apply transform transition-all duration-200 ease-in;
   }
   .btn {
     @apply bg-blue rounded-xl text-white;
+  }
+  .card {
+    @apply rounded-2xl shadow-xl animation hover:shadow-2xl hover:-translate-y-1;
   }
 }
 
